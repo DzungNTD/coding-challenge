@@ -10,7 +10,24 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["src/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["src/components/*"],
+      "@constant": ["src/constant/*"],
+      "@services/*": ["src/services/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@screens/*": ["src/screens/*"],
+      "@utils/*": ["src/utils/*"],
+      "@theme/*": ["src/theme/*"],
+      "@api/*": ["src/api/*"]
+      // "@firebase/*": ["src/firebase/*"],
+      // "@helper/*": ["src/helper/*"],
+      // "@hooks/*": ["src/hooks/*"],
+      // "@redux/*": ["src/redux/*"],
+    }
   },
   "exclude": [
     "node_modules",
