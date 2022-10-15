@@ -1,2 +1,2 @@
 /* eslint-disable prettier/prettier */
-export {default as PhotoApi} from './PhotoApi';
+export {default as photoApi} from './photoApi';

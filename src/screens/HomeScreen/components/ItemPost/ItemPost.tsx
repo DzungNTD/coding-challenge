@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 16,
     paddingHorizontal: 16,
+    // backgroundColor: theme.color.white,
   },
   image: {
     width: '100%',
