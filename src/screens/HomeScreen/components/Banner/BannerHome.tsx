@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {BaseAmountHeart} from '@components';
+import {BaseAmountLike} from '@components';
 import {theme} from '@theme';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
@@ -18,7 +18,7 @@ function BannerHome() {
         <Text style={styles.descriptionText}>
           Alley in Île de Gorée, Dakar, Senegal
         </Text>
-        <BaseAmountHeart />
+        <BaseAmountLike />
       </View>
     </View>
   );

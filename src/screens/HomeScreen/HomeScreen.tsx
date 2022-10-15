@@ -7,11 +7,12 @@ function HomeScreen() {
   const keyExtractor = useCallback((_: any) => _.id, []);
   return (
     <View style={styles.container}>
-      <BannerHome />
       <FlatList
-        data={Array(5).fill('')}
+        data={Array(10).fill('')}
         keyExtractor={keyExtractor}
         renderItem={({item}) => <ItemPost post={item} />}
+        ListHeaderComponent={<BannerHome />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

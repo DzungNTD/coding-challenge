@@ -1,15 +1,16 @@
 /* eslint-disable prettier/prettier */
-import {BaseAmountHeart} from '@components';
+import {BaseAmountLike} from '@components';
 import {IPhotoAPI} from '@services';
+import {theme} from '@theme';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 interface IState {
   post: IPhotoAPI;
 }
 
-function ItemPost({post}: IState) {
+function ItemPost({}: IState) {
   return (
-    <View>
+    <View style={styles.container}>
       <View>
         <Image
           source={{
@@ -17,17 +18,45 @@ function ItemPost({post}: IState) {
           }}
           style={styles.image}
         />
-        <BaseAmountHeart />
+        <BaseAmountLike style={styles.viewLike} />
       </View>
-      <Text>123</Text>
+      <Text style={styles.textTitle}>
+        Panoramic view of garibaldi lake with blue sky, white clouds, blue water
+      </Text>
+      <Text style={styles.textDescription}>
+        Panoramic view of garibaldi lake with blue sky, white clouds, blue water
+        and snow mountain. BC, Canada.
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 16,
+    paddingHorizontal: 16,
+  },
   image: {
     width: '100%',
     height: 220,
+  },
+  viewLike: {
+    position: 'absolute',
+    left: 8,
+    bottom: 8,
+  },
+  textTitle: {
+    color: theme.color.black,
+    fontWeight: '500',
+    fontSize: 17,
+    lineHeight: 24,
+    marginVertical: 8,
+  },
+  textDescription: {
+    color: theme.color.gray,
+    fontWeight: '300',
+    fontSize: 13,
+    lineHeight: 18,
   },
 });
 
