@@ -1,24 +1,24 @@
 /* eslint-disable prettier/prettier */
-import {BaseAmountLike} from '@components';
-import {theme} from '@theme';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-
-function BannerHome() {
+import {BaseAmountLike} from '@components';
+import {IPhotoAPI} from '@services';
+import {theme} from '@theme';
+interface IState {
+  post: IPhotoAPI | undefined;
+}
+function BannerHome({post}: IState) {
   return (
     <View style={styles.container}>
-      <Image
-        source={{
-          uri: 'https://images.unsplash.com/photo-1664575602807-e002fc20892c?ixid=MnwzNzE4NTR8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2NTcyNzcyMQ&ixlib=rb-1.2.1',
-        }}
-        style={styles.image}
-      />
+      <Image source={{uri: post?.urls.small}} style={styles.image} />
       <View style={styles.body}>
-        <Text style={styles.titleText}>Photo of the day</Text>
-        <Text style={styles.descriptionText}>
-          Alley in Île de Gorée, Dakar, Senegal
+        <Text style={styles.titleText}>
+          {post?.description || 'Description'}
         </Text>
-        <BaseAmountLike />
+        <Text style={styles.descriptionText}>
+          {post?.alt_description || 'Alt description'}
+        </Text>
+        <BaseAmountLike amount={post?.likes} />
       </View>
     </View>
   );

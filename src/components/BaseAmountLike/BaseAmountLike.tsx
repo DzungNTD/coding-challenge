@@ -5,11 +5,11 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {AmountLikeProps} from './AmountLikeModel';
 
-function BaseAmountLike({style}: AmountLikeProps) {
+function BaseAmountLike({style, amount = 0}: AmountLikeProps) {
   return (
     <View style={[styles.container, style]}>
       <SvgHeart />
-      <Text style={styles.text}>160</Text>
+      <Text style={styles.text}>{amount}</Text>
     </View>
   );
 }

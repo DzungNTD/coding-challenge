@@ -8,24 +8,16 @@ interface IState {
   post: IPhotoAPI;
 }
 
-function ItemPost({}: IState) {
+function ItemPost({post}: IState) {
   return (
     <View style={styles.container}>
       <View>
-        <Image
-          source={{
-            uri: 'https://images.unsplash.com/photo-1664575602807-e002fc20892c?ixid=MnwzNzE4NTR8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2NTcyNzcyMQ&ixlib=rb-1.2.1',
-          }}
-          style={styles.image}
-        />
-        <BaseAmountLike style={styles.viewLike} />
+        <Image source={{uri: post.urls.small}} style={styles.image} />
+        <BaseAmountLike style={styles.viewLike} amount={post.likes} />
       </View>
-      <Text style={styles.textTitle}>
-        Panoramic view of garibaldi lake with blue sky, white clouds, blue water
-      </Text>
+      <Text style={styles.textTitle}>{post.description || 'Description'}</Text>
       <Text style={styles.textDescription}>
-        Panoramic view of garibaldi lake with blue sky, white clouds, blue water
-        and snow mountain. BC, Canada.
+        {post.alt_description || 'alt_description'}
       </Text>
     </View>
   );

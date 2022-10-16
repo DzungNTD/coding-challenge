@@ -59,8 +59,8 @@ interface IUser {
   location: string;
   links: ILinks;
   profile_image: IProfileImage;
-  instagram_username: string;
-  total_collections: string;
+  instagram_username: string | null;
+  total_collections: string | null;
   total_likes: string;
   total_photos: string;
   accepted_tos: boolean;
