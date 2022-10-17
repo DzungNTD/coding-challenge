@@ -9,12 +9,16 @@ import {MyTabBar} from './MyTabBar';
 import SearchStack from './SearchStack';
 import UploadStack from './UploadStack';
 import UserStack from './UserStack';
+import {theme} from '@theme';
 
 const Tab = createBottomTabNavigator();
 
 function MainStack() {
   return (
     <Tab.Navigator
+      sceneContainerStyle={{
+        marginTop: theme.statusBarHeight,
+      }}
       tabBar={(props: BottomTabBarProps) => <MyTabBar {...props} />}
       screenOptions={{
         headerShown: false,

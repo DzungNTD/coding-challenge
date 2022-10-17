@@ -15,8 +15,10 @@ function ItemPost({post}: IState) {
         <Image source={{uri: post.urls.small}} style={styles.image} />
         <BaseAmountLike style={styles.viewLike} amount={post.likes} />
       </View>
-      <Text style={styles.textTitle}>{post.description || 'Description'}</Text>
-      <Text style={styles.textDescription}>
+      <Text numberOfLines={1} style={styles.textTitle}>
+        {post.description || 'Description'}
+      </Text>
+      <Text numberOfLines={3} style={styles.textDescription}>
         {post.alt_description || 'alt_description'}
       </Text>
     </View>

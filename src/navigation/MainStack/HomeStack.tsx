@@ -11,7 +11,17 @@ function HomeStack() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={SCREEN.HOME_SCREEN} component={HomeScreen} />
+      <Stack.Screen
+        name={SCREEN.HOME_SCREEN}
+        component={HomeScreen}
+        listeners={{
+          tabPress: e => {
+            // Prevent default action
+            e.preventDefault();
+            alert('kdasjfhkasdjhf');
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
