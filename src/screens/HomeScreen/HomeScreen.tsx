@@ -14,20 +14,49 @@ const ListFooterComponent = ({isLoadMore}: {isLoadMore: boolean}) => {
   ) : null;
 };
 
-function HomeScreen() {
+function HomeScreen(props: any) {
   const [posts, setPosts] = useState<IPhotoAPI[]>([]);
   const [pageCurrent, setPageCurrent] = useState<number>(1);
   const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
   const [banner, setBanner] = useState<IPhotoAPI>();
   const [refresh, setRefresh] = useState<boolean>(false);
 
+  const focusRef = useRef<boolean>(false);
+  const countRef = useRef<number>(0);
+  const flatListRef = useRef<any>(null);
+  const flatListOffset = useRef(0);
+
   useEffect(() => {
     getListPost();
   }, []);
 
   useEffect(() => {
-    if (refresh) getListPost();
+    let timeout: number;
+    if (refresh) {
+      timeout = setTimeout(() => {
+        getListPost();
+      }, 500);
+    }
+    return () => clearTimeout(timeout);
   }, [refresh]);
+
+  useEffect(() => {
+    const unsubscribe = props.navigation.addListener('tabPress', e => {
+      e.preventDefault();
+      if (countRef.current > 0) {
+        focusRef.current = true;
+      }
+      countRef.current++;
+
+      if (flatListRef.current && focusRef.current) {
+        flatListRef.current.scrollToOffset({animated: true, offset: 0});
+        if (flatListOffset.current === 0) {
+          onRefresh();
+        }
+      }
+    });
+    return unsubscribe;
+  }, [props.navigation]);
 
   const getListPost = async () => {
     try {
@@ -73,6 +102,7 @@ function HomeScreen() {
   return (
     <View style={styles.container}>
       <FlatList
+        ref={flatListRef}
         data={posts}
         keyExtractor={keyExtractor}
         renderItem={({item}) => <ItemPost post={item} />}
@@ -83,6 +113,9 @@ function HomeScreen() {
         onEndReachedThreshold={0}
         onRefresh={onRefresh}
         refreshing={refresh}
+        onScroll={event => {
+          flatListOffset.current = event.nativeEvent.contentOffset.y;
+        }}
       />
     </View>
   );
