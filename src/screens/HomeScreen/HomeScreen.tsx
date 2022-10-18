@@ -42,7 +42,6 @@ function HomeScreen(props: any) {
 
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('tabPress', e => {
-      e.preventDefault();
       if (countRef.current > 0) {
         focusRef.current = true;
       }

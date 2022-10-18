@@ -10,7 +10,7 @@ import SearchStack from './SearchStack';
 import UploadStack from './UploadStack';
 import UserStack from './UserStack';
 import {theme} from '@theme';
-import { HomeScreen } from '@screens';
+import {HomeScreen, SearchScreen, UploadScreen, UserScreen} from '@screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,9 +26,33 @@ function MainStack() {
         tabBarHideOnKeyboard: true,
       }}>
       <Tab.Screen name={SCREEN.HOME_STACK} component={HomeScreen} />
-      <Tab.Screen name={SCREEN.SEARCH_STACK} component={SearchStack} />
-      <Tab.Screen name={SCREEN.UPLOAD_STACK} component={UploadStack} />
-      <Tab.Screen name={SCREEN.USER_STACK} component={UserStack} />
+      <Tab.Screen
+        name={SCREEN.SEARCH_STACK}
+        component={SearchScreen}
+        listeners={({navigation, route}) => ({
+          tabPress: e => {
+            e.preventDefault();
+          },
+        })}
+      />
+      <Tab.Screen
+        name={SCREEN.UPLOAD_STACK}
+        component={UploadScreen}
+        listeners={({navigation, route}) => ({
+          tabPress: e => {
+            e.preventDefault();
+          },
+        })}
+      />
+      <Tab.Screen
+        name={SCREEN.USER_STACK}
+        component={UserScreen}
+        listeners={({navigation, route}) => ({
+          tabPress: e => {
+            e.preventDefault();
+          },
+        })}
+      />
     </Tab.Navigator>
   );
 }
