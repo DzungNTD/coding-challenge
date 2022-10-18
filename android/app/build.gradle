@@ -211,6 +211,12 @@ android {
         }
     }
     signingConfigs {
+        release {
+            storeFile file('coding-challenge-release-key')
+            storePassword '123456'
+            keyAlias 'coding-challenge'
+            keyPassword '123456'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
